@@ -1,9 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const { index, show, store, update, modify, destroy } = require('../controllers/movieController.js')
+const setImagePath = require('../middlewares/imagePathMiddleware.js');
 
 router.get('/', index)
-router.get('/:id', show)
+router.get('/:id', setImagePath, show)
 router.post('/', store)
 router.put('/:id', update)
 router.patch('/:id', modify)
